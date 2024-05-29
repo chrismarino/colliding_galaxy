@@ -1,0 +1,39 @@
+% Constants
+radius_A = 1e6; % miles
+radius_B = 2e6; % miles
+num_stars_A = 1e6;
+num_stars_B = 2e6;
+volume_galaxy = 4.5e21; % cubic light years
+mile_to_ly = 1.0570e-13; % light years
+distance = 1e5; % light years
+velocity_mph = 1.5e6; % miles per hour
+mph_to_ly_per_year = 1.467e-9; % light years per year
+
+% Convert radius to light years
+radius_A = radius_A * mile_to_ly;
+radius_B = radius_B * mile_to_ly;
+
+% Calculate diameter
+diameter_A = 2 * radius_A;
+diameter_B = 2 * radius_B;
+
+% Calculate probability
+P_A = num_stars_B * (pi * diameter_A^2) / volume_galaxy;
+P_B = num_stars_A * (pi * diameter_B^2) / volume_galaxy;
+
+% Convert velocity to light years per year
+velocity = velocity_mph * mph_to_ly_per_year;
+
+% Calculate time until galaxies collide
+time_until_collision = distance / velocity;
+
+% Calculate number of star collisions
+num_collisions_A = P_A * time_until_collision;
+num_collisions_B = P_B * time_until_collision;
+
+% Display results
+fprintf('Probability of a star from galaxy A colliding with a star from galaxy B: %e\n', P_A);
+fprintf('Probability of a star from galaxy B colliding with a star from galaxy A: %e\n', P_B);
+fprintf('Time until galaxies collide: %f years\n', time_until_collision);
+fprintf('Number of star collisions from galaxy A: %e\n', num_collisions_A);
+fprintf('Number of star collisions from galaxy B: %e\n', num_collisions_B);

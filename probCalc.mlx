@@ -1,0 +1,23 @@
+% Constants
+radius_A = 1e6; % miles
+radius_B = 2e6; % miles
+num_stars_A = 1e6;
+num_stars_B = 2e6;
+volume_galaxy = 4.5e21; % cubic light years
+mile_to_ly = 1.0570e-13; % light years
+
+% Convert radius to light years
+radius_A = radius_A * mile_to_ly;
+radius_B = radius_B * mile_to_ly;
+
+% Calculate diameter
+diameter_A = 2 * radius_A;
+diameter_B = 2 * radius_B;
+
+% Calculate probability
+P_A = num_stars_B * (pi * diameter_A^2) / volume_galaxy;
+P_B = num_stars_A * (pi * diameter_B^2) / volume_galaxy;
+
+% Display results
+fprintf('Probability of a star from galaxy A colliding with a star from galaxy B: %e\n', P_A);
+fprintf('Probability of a star from galaxy B colliding with a star from galaxy A: %e\n', P_B);
